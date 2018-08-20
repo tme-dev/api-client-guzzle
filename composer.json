@@ -12,7 +12,6 @@
     "require": {
         "guzzlehttp/guzzle": "^6.2"
     },
-    "minimum-stability": "stable",
     "autoload": {
         "psr-4" : {
             "TMEApi\\": "src/"

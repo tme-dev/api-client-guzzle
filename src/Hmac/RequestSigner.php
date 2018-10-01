@@ -28,8 +28,8 @@ class RequestSigner
     public function signRequest(RequestInterface $request)
     {
         $requestParameters = [];
-        parse_str(urldecode($request->getBody()->__toString()), $requestParameters);
-
+        parse_str(rawurldecode(rawurlencode($request->getBody()->__toString())), $requestParameters);
+        
         $credentialsParameters = [
             'Token'        => $this->credentials->getToken(),
             'ApiSignature' => $this->getSignature(

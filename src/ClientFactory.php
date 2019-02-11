@@ -17,7 +17,7 @@ class ClientFactory
      *
      * @return Client
      */
-    public static function factoryForCredentials($token, $secret)
+    public static function factoryForCredentials($token, $secret, $host = null)
     {
         $credentials = new Credentials($token, $secret);
         $middleware = new HmacSignMiddleware($credentials);
@@ -28,7 +28,7 @@ class ClientFactory
 
         // Create a client
         return new Client([
-            'base_uri' => 'https://api.tme.eu',
+            'base_uri' => !$host ? 'https://api.tme.eu' : $host,
             'handler' => $stack,
         ]);
     }

@@ -60,7 +60,7 @@ class RequestSigner
     {
         $parameters = $this->sortSignatureParams($parameters);
 
-        $queryString = http_build_query($parameters, null, '&', PHP_QUERY_RFC3986);
+        $queryString = http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
         $signatureBase = strtoupper('POST') .
             '&' . rawurlencode($this->getUrl($requestUri)) . '&' . rawurlencode($queryString);
 
